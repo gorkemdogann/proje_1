@@ -1,0 +1,13 @@
+{% extends 'layout.html' %} {% block body %}
+<div class='jumbotron text-center' style="background-image:url('/static/img/shuttle.jpg'); min-height: 400px;">
+    <h3 style="color:white">Transfer Şirketine Hoşgeldiniz</h3>
+    <p style="color:whitesmoke">Bu sitede Transfer şoförleri, ücreti, misafirin adı yazmaktadır..</p>
+</div>
+<p> 
+    {% if request.user.is_authenticated %}
+        Giriş Yapılmış, {{ request.user.username }}
+    {% else %}
+        Giriş Yapılmamış
+    {% endif %}
+</p>
+{% endblock body %}

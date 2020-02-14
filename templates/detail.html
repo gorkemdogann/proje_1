@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<div class="row">
+    <div class="col-lg-8">
+    <small>
+        {{expedition.sofor.username}}
+    </small>
+    <small>
+        {{expedition.tarih}}
+    </small>
+    <h3 class="mt-4">Şoför Ismi: {{expedition.sofor_pilot}}</h3>
+    <hr>
+    <p>Transfer Yeri: {{expedition.sefer_yeri}}</p>
+    <hr>
+    <p>Ücret: {{expedition.ucret}} TL</p>
+    <hr>
+    <p>Firma Adı: {{expedition.firma}}</p>
+    <hr>
+    <p>Misafir Adı: {{expedition.musteri}}</p>
+    <hr>
+    <p>Misafirin Adresi: {{expedition.musteri_adress}}</p>
+    <hr>
+    <p>Transfer Tarihi: {{expedition.tarih}}</p>
+    <hr>
+    </div>
+</div>
+
+{% endblock body %}
