@@ -1,9 +1,8 @@
-{% extends "layout.html" %}
-
+{% extends "layout1.html" %}
 {{% block body %}
 
 <head>
-  <title>FC-python wrapper</title>
+  <title>Shuttle Firması</title>
   {% load static %} 
 </head>
 <body>
@@ -11,8 +10,8 @@
   <div class = "container" style = "width:'75%'">
     <canvas id="myChart"></canvas>
   </div>
-  <br> <br>
-    <div class = "container" style = "width:'75%'">
+  <br><br><br>
+  <div class = "container" style = "width:'75%'">
     <canvas id="myChart_mix"></canvas>
   </div>
    <script type="text/javascript" src="{% static "fusioncharts/fusioncharts.js" %}"></script>
@@ -23,11 +22,18 @@ var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: {{title|safe}},
+        labels: {{sefer_yeri|safe}},
         datasets: [{
-            label: 'Ürün Fiyatı',
-            data: {{fiyat|safe}},
+            label: 'Ücretler',
+            data: {{ucret|safe}},
             backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(128, 255, 0, 0.2)',
+                'rgba(191, 255, 0, 0.2)',
+                'rgba(255, 64, 0, 0.2)',
+                'rgba(0, 255, 128, 0.2)',
+                'rgba(0, 255, 255, 0.2)',
+                'rgba(0, 128, 255, 0.2)',
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
                 'rgba(255, 206, 86, 0.2)',
@@ -36,6 +42,13 @@ var myChart = new Chart(ctx, {
                 'rgba(255, 159, 64, 0.2)'
             ],
             borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(128, 255, 0, 1)',
+                'rgba(191, 255, 0, 1)',
+                'rgba(255, 64, 0, 1)',
+                'rgba(0, 255, 128, 1)',
+                'rgba(0, 255, 255, 1)',
+                'rgba(0, 128, 255, 1)',
                 'rgba(255, 99, 132, 1)',
                 'rgba(54, 162, 235, 1)',
                 'rgba(255, 206, 86, 1)',
@@ -57,50 +70,59 @@ var myChart = new Chart(ctx, {
     }
 });
 
-var ctx2 = document.getElementById('myChart_mix').getContext('2d');
-var myChart2 = new Chart(ctx2, {
-    type: 'line',
-    	data: {
-        	labels:Dış Hatlar,
-        	datasets: [{
-            	label: 'Fiyat',
-            	//backgroundColor: 'rgb(0, 99, 132)',
-        	    borderColor: 'rgb(0, 99, 132)',
-        	    data: {{fiyat|safe}},
-			},{
-				label: 'İç hatlar',
-				//backgroundColor: 'rgb(0,200, 0)',
-				borderColor: 'rgb(0,200, 0)',
-				data:{{yas|safe}},
-			}
-			]
-		},
-
-    	// Configuration options go here
-	    options: {}
-	});
-
-		function updateChart() {
-			//chart.data.datasets[0].data = newdata;
-			//chart.data.datasets[1].data = newdata1;
-			chart.data.labels = ["Ağustos","Eylül","Ekim","Kasım","Aralık"]
-			chart.update();
-		};
-
-// pop = remove last value
-//shift = remove first value
-//unshift = add the value at the very beginning of the array
-//push = add the value at the very end of the array
-//chart.data.datasets[0].data = variable;
 
 
-		function addValue() {
-			//chart.data.datasets[0].data.unshift(999);
-			chart.data.datasets[0].data.reverse();
-			//chart.data.datasets[0].data.push(999);
-			//chart.data.labels.push("Ocak");
-			chart.update();
-		}
+var ctx = document.getElementById('myChart_mix').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: {{firma|safe}},
+        datasets: [{
+            label: 'Ücretler',
+            data: {{ucret|safe}},
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(128, 255, 0, 0.2)',
+                'rgba(191, 255, 0, 0.2)',
+                'rgba(255, 64, 0, 0.2)',
+                'rgba(0, 255, 128, 0.2)',
+                'rgba(0, 255, 255, 0.2)',
+                'rgba(0, 128, 255, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(128, 255, 0, 1)',
+                'rgba(191, 255, 0, 1)',
+                'rgba(255, 64, 0, 1)',
+                'rgba(0, 255, 128, 1)',
+                'rgba(0, 255, 255, 1)',
+                'rgba(0, 128, 255, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
 
 </script>
 </body>

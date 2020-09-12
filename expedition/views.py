@@ -1,8 +1,9 @@
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from .forms import ExpeditionForm
 from django.contrib import messages
-from .models import Seferler, Chart
+from .models import Seferler, Firma, Musteri
 from django.contrib.auth.decorators import login_required
+from time import gmtime, strftime
 
 
 def Index(request):
@@ -14,7 +15,6 @@ def About(request):
 @login_required(login_url = "user:login")
 def Dashboard(request):
     expeditions = Seferler.objects.filter(sofor=request.user)
-    #firmalar = Seferler.objects.filter(firma = request.)
     context = {
         'expeditions':expeditions,
     }
@@ -60,24 +60,24 @@ def DeleteExpedition(request, id):
     return redirect('expedition:dashboard')
 
 
-@login_required(login_url = "user:login")
 def chart(request):
-    veri = Chart.objects.all()
+    veri = Seferler.objects.all()
     title_list = []
     fiyat_list = []
-    yas_list = []
+    firma_list = []
+    sofor_pilot_list = []
     for i in veri:
-        title_list.append(i.title)
-        fiyat_list.append(i.fiyat)
-        yas_list.append(i.yas)
-    print(title_list)
-    print(fiyat_list)
+        title_list.append(i.sefer_yeri)
+        fiyat_list.append(i.ucret)
+        firma_list.append(i.firma)
+        sofor_pilot_list.append(i.sofor_pilot)
+        
     context = {
-        'title' : title_list,
-        'fiyat' : fiyat_list,
-        'yas' : yas_list
+        'sofor_pilot' : sofor_pilot_list,
+        'firma' : firma_list,
+        'sefer_yeri' : title_list,
+        'ucret' : fiyat_list,
         }
-    
     return render(request, 'chart.html',context)
 
 
@@ -90,3 +90,10 @@ def firma_list(request, firma):
 
     return  render(request, 'firma_list.html', context)
 
+@login_required(login_url = "user:login")
+def sefer_tarihi(request):
+    expedition = strftime("%c", gmtime())
+    context = {
+        'expedition' : expedition,
+    }
+    return  render(request, 'layout.html', context)

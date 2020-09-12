@@ -1,4 +1,4 @@
-{% extends 'layout.html' %}
+{% extends 'layout1.html' %}
 {% block body %}
 
 <div class="row">
@@ -19,10 +19,15 @@
     <hr>
     <p>Misafir Adı: {{expedition.musteri}}</p>
     <hr>
-    <p>Misafirin Adresi: {{expedition.musteri_adress}}</p>
+    <p>Misafir Telefon No: {{expedition.musteri_tel}}</p>
     <hr>
-    <p>Transfer Tarihi: {{expedition.tarih}}</p>
+    <p>Misafir Adresi: {{expedition.musteri_adress}}</p>
     <hr>
+    <p>Transfer Tarihi-Saati: {{expedition.ayar_tarih}}</p>
+    <hr>
+    <p>Oluşturulma Tarihi: {{expedition.tarih}}</p>
+    <hr>
+
     </div>
 </div>
 

@@ -10,8 +10,8 @@ urlpatterns = [
     path('expedition/<int:id>',views.Detail, name='detail'),
     path('update/<int:id>',views.UpdateExpedition, name='update'),
     path('delete/<int:id>',views.DeleteExpedition, name='delete'),
-    path('chart/',views.chart, name="chart"),
     path('firma_list/<str:firma>',views.firma_list, name='firma_list'),
+    path('chart/',views.chart, name="chart"),
 
 
 ]

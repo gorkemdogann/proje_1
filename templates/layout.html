@@ -1,35 +1,127 @@
-<!DOCTYPE html>
-{% load static %}
+<!DOCTYPE html> {% load static %}
 
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/img/fly.png" type="image/x-icon" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Transfer Şirketi</title>
-</head>
-<body>
-    {% include "includes/navbar.html" %}
-     <hr>
-    <div style="margin-top: 50px;" class='container'>
-            {% if messages %}
-                {% for message in messages %}
-                {% if message.tags == "info" %}
-                    <div class="alert alert-success">{{ message }}</div>
-                {% else %}
-                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-                {% endif %}
-                {% endfor %}
-            {% endif %}
-        {% block body %}
+    <style type="text/css">
+        .ANA {
+            width: 1200px;
+            margin: auto;
+        }
         
-        {% endblock body %}
+        .ust {
+            width: 1200px;
+            height: 50px;
+            text-align: center;
+        }
+        
+        .orta {
+            width: 800px;
+            height: 400px;
+            float: left;
+            text-align: center;
+        }
+        
+        .sol {
+            background-color: Gainsboro;
+            width: 200px;
+            height: 400px;
+            float: left;
+            text-align: center;
+        }
+        
+        .sag {
+            background-color: Gainsboro;
+            width: 200px;
+            height: 400px;
+            float: right;
+            text-align: center;
+        }
+        
+        .alt {
+            background-color: white;
+            width: 1200px;
+            height: 60px;
+            margin-top: 400px;
+            text-align: center;
+        }
+        
+        .social-icons {
+            text-align: center;
+        }
+        
+        .social-icons li {
+            display: inline-block;
+            list-style-type: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+        }
+        
+        .social-icons li a {
+            border-bottom: none;
+        }
+        
+        .social-icons li img {
+            width: 40px;
+            height: 40px;
+            margin-right: 20px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ANA">
+        <div class="ust">
+            {% include "includes/navbar.html" %}
+            <div style="margin-top: 60px;" class='container'>
+                {% if messages %} {% for message in messages %} {% if message.tags == "info" %}
+                <div class="alert alert-success">{{ message }}</div>
+                {% else %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endif %} {% endfor %} {% endif %}
+            </div>
+        </div>
+
+        <div class="sol">
+        </div>
+
+        <div class="sag">
+            <th scope="col">Bugünkü Seferler</th>
+
+        </div>
+
+        <div class="orta">
+            <div <h3 style="color:black">Transfer Şirketine Hoşgeldiniz</h3>
+                <p style="color:black">Bu sitede Transfer şoförleri, ücreti, misafirin adı yazmaktadır..</p>
+            </div>
+        </div>
+
+        <div class="alt">
+            <ul class="social-icons">
+                <li>
+                    <a href="https://www.linkedin.com/company/sfmyazilim/"><img src='/static/img/linkedin.png' /></a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/pg/sfmyazilim/about/?ref=page_internal"><img src='/static/img/facebook.png' /></a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/sfm_a"><img src='/static/img/twitter.png' /></a>
+                </li>
+                <li>
+                    <a href="https://www.youtube.com/channel/UCe8SeZLB2MLuHZ86udZcF6Q"><img src='/static/img/youtube.png' /></a>
+                </li>
+            </ul>
+        </div>
     </div>
-
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery-3.2.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
-
 </body>
+
 </html>
